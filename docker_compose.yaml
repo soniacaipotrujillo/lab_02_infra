@@ -1,0 +1,28 @@
+version: '3'
+services:
+
+ api01:
+   container_name: api01
+   build: ./api 
+   image: nmatsui/hello-world-api
+   environment:
+    -MESSAGE=${NOMBRE} ESTOY EN EL API 01
+   ports:
+    -"3000:3000"
+ api02:
+  container_name: api02
+  build: ./api
+  environment:
+   -MESSAGE=${NOMBRE} ESTOY EN EL API 02
+   -"3001:300"
+ api03:
+  container_name: api03
+  environment:
+   -MESSAGE=${NOMBRE} ESTOY EN EL API 03
+   -"3002:300"
+ db:
+  image: postgres:13
+  environment:
+    - POSTGRES_USER=${postgres_user}
+    - POSTGRES_PASSWORD=${postgres_password}
+    - POSTGRES_DB=${postgres_DB}
