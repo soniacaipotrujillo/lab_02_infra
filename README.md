@@ -1,38 +1,41 @@
 # Laboratorio 02
-Hoy utlizaremos docker compose para poder desplegar un servicio web y una base de
-datos
-STACK Tecnico
-- $ docker run -d --rm -p 3000:3000 nmatsui/hello-world-api
--
-API
-- Aplicación JAVA dockerizarla (crear la imagen)
-- docker pull nmatsui/hello-world-api
-Mombre de los contenedores 
-- compassionate_brown 3001
-- condescending_agnesi 3000
+en el siguiente laboratorio consiste en el despliegue de una infraestructura en la cual utilizamos Docker-compose.
 
-BD PostgreSQL
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-COMANDOS
-Deben especificar los comandos que voy a ejecutar
-```bash
-docker compose up -d
-```
-CONFIGURACIONES
-.env
-```
-VAR=VALUE
-```
-# Actividad
-Trabajar un docker compose, especificando configuración y comandos para despliegue.
-Debe permitir lo siguiente:
-- 3 copias de una API build local
-- Configuración BD
-- Uso de volúmenes
-- Uso de variables de entorno
-- En README. Responder los tipos de redes y los tipos de volumen que existen en
-docker
-- Hacer uso de Conventional Commits
-- Repositorio publico
-- Uso de .gitignore
-- Opcional: Capturas de su proyecto desplegado
+1. comandos de operacion :
+
+ - docker compose build : construye la imagen local de la API
+
+ - docker compose up -d :inicia todos los contenedores 
+
+ - para comprobar el funcionamiento , se realizan peticiones a los puertos (3000,3001 y 3002) utilizando el siguiente comando :
+
+    curl -i http://localhost:3000
+    curl -i http://localhost:3001
+    curl -i http://localhost:3002
+
+
+2. Tipo de redes en docker :
+
+en el codigo solo se utiliza un tipo de red en docker y es bridge pero hay muchos mas y son los siguientes 
+
+ - bridge : Docker Compose crea normalmente una red bridge para conectar los servicios del mismo proyecto, como las APIs y PostgreSQL.
+
+ - host :Sirve para el contenedor y se usa directamente la red del equipo anfitrion.
+
+ - none : Sirve para ejecutar un contenedor sin conexion de red .
+
+ - overlay : se utiliza para comunica contenedores distribuidos en diferentes equipos de Docker.
+
+ - macvlan: Sirve para asignar al contenedor su propia direccion MAC y hacerlo visible en la red fisica como otro dispositivo.
+
+ - ipvlan : se utiliza para asignar direcciones IP a los contenedores usando la interfaz de red.
+
+3. TIpo de Volumenes de Docker 
+
+ - Volumen nombrado : administrado por Docker y reutilizable. en nuestro proyecto es POSTGRES_DATA usado por PostgreSQL.
+
+ - Volumen anonimos:creado por el mismo Docker  sin un nombre explicitamente 
+
+ - Bind mount: conecta una carpeta o archivo del equipo anfrition con un contenedor.
+
+ - tmpfs: almacena datos temporalmente en la memoria RAM
