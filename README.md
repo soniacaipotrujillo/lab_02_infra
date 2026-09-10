@@ -39,3 +39,13 @@ en el codigo solo se utiliza un tipo de red en docker y es bridge pero hay mucho
  - Bind mount: conecta una carpeta o archivo del equipo anfrition con un contenedor.
 
  - tmpfs: almacena datos temporalmente en la memoria RAM
+
+Capturas de su proyecto desplegado en README.md
+
+![Resultados en la terminal](mensaje_consola.png)
+
+![API01 resultado en localhost](resultado_api01.png)
+
+![API02 resultado en localhost](api02_localhost.png)
+
+![API03 resultado en localhost](api03_localhost.png)
